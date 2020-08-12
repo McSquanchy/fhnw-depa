@@ -2,8 +2,10 @@ package ch.fhnw.depa.mcsquanchy.colorpicker;
 
 import javafx.application.Platform;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -20,8 +22,6 @@ public class UI extends VBox {
         menu.getItems().add(exit);
         bar.getMenus().add(menu);
 
-        this.setSpacing(10);
-
         GridPane mainUI = getGridPane(m);
 
         getChildren().addAll(bar, mainUI);
@@ -29,7 +29,7 @@ public class UI extends VBox {
 
     private GridPane getGridPane(Model m) {
         GridPane pane = new GridPane();
-        pane.setPadding(new Insets(0,10,10,10));
+        pane.setPadding(new Insets(10));
         pane.setHgap(10);
         pane.setVgap(10);
 
@@ -67,14 +67,13 @@ public class UI extends VBox {
         Slider blueSlider = new Slider(0, 255,0);
         blueSlider.valueProperty().bindBidirectional(m.blueProperty());
 
-//        Label alphaLabel = new Label("A");
-//        TextField rgbAlpha = new TextField();
-//        rgbAlpha.textProperty().bindBidirectional(m.alphaProperty(), new NumberStringConverter());
-//        Slider alphaSlider = new Slider(0, 1.0f,1.0f);
-//        alphaSlider.valueProperty().bindBidirectional(m.alphaProperty());
+        Label alphaLabel = new Label("A");
+        TextField rgbAlpha = new TextField();
+        rgbAlpha.textProperty().bindBidirectional(m.alphaProperty(), new NumberStringConverter());
+        Slider alphaSlider = new Slider(0, 1.0f,1.0f);
+        alphaSlider.valueProperty().bindBidirectional(m.alphaProperty());
 
         Rectangle display = new Rectangle();
-        display.setHeight(100);
         display.setStroke(Color.BLACK);
         display.widthProperty().bind(pane.widthProperty().divide(3));
         display.fillProperty().bind(m.colorProperty());
@@ -102,17 +101,20 @@ public class UI extends VBox {
         pane.add(rgbBlue, 2,2,1,1);
         pane.add(hexRgbBlue, 3,2,1,1);
 
-//        pane.add(alphaLabel, 0,3,1,1);
-//        pane.add(alphaSlider, 1,3,1,1);
-//        pane.add(rgbAlpha,2,3,1,1);
+        pane.add(alphaLabel, 0,3,1,1);
+        pane.add(alphaSlider, 1,3,1,1);
+        pane.add(rgbAlpha,2,3,1,1);
 
-        pane.add(display, 0,4, 3,2);
+        GridPane.setValignment(display, VPos.CENTER);
+
+        display.setHeight(160);
+        pane.add(display, 0,4, 3,4);
 
         pane.add(rgbValCopyField, 2,5,1,1);
         pane.add(rgbDecVal, 2,4,1,1);
 
-        pane.add(rgbHexValCopyField, 3,5,1,1);
-        pane.add(rgbHexVal, 3,4,1,1);
+        pane.add(rgbHexValCopyField, 3,7,1,1);
+        pane.add(rgbHexVal, 3,6,1,1);
         return pane;
     }
 }

@@ -2,7 +2,6 @@ package ch.fhnw.depa.mcsquanchy.colorpicker;
 
 import javafx.beans.property.*;
 import javafx.scene.paint.Color;
-
 import java.text.DecimalFormat;
 
 public class Model {
@@ -94,16 +93,12 @@ public class Model {
         return blue;
     }
 
-    public float getAlpha() {
-        return alpha.get();
-    }
-
     public SimpleFloatProperty alphaProperty() {
         return alpha;
     }
 
-    public String getRedHexString() {
-        return redHexString.get();
+    public float getAlpha() {
+        return alpha.get();
     }
 
     public SimpleStringProperty redHexStringProperty() {
@@ -126,10 +121,6 @@ public class Model {
         return blueHexString;
     }
 
-    public Color getColor() {
-        return color.get();
-    }
-
     public ObjectProperty<Color> colorProperty() {
         return color;
     }
@@ -148,5 +139,10 @@ public class Model {
 
     public SimpleStringProperty rgbHexValProperty() {
         return rgbHexVal;
+    }
+
+
+    public String getRedHexString() {
+        return redHexString.get();
     }
 }
