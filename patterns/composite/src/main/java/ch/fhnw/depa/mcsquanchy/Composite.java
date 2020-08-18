@@ -2,11 +2,11 @@ package ch.fhnw.depa.mcsquanchy;
 
 import java.util.Set;
 
-public class Node implements Component {
+public class Composite implements Component {
     String title;
     Set<Component> leafs;
 
-    public Node(String title, Set<Component> leafs) {
+    public Composite(String title, Set<Component> leafs) {
         this.title = title;
         this.leafs = leafs;
     }

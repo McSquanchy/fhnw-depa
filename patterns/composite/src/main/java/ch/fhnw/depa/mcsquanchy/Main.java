@@ -9,10 +9,10 @@ public class Main {
     public static void main(String[] args) {
         Set<Component> testSet1 = Stream.of(new Leaf("Feed cat"), new Leaf("Feed dog")).collect(Collectors.toSet());
         Set<Component> testSet2 = Stream.of(new Leaf("Water plant"), new Leaf("Clean windows")).collect(Collectors.toSet());
-        Node testNode1 = new Node("Animal Care", testSet1);
-        Node testNode2 = new Node("House Keeping", testSet2);
-        Set<Component> holidays = Stream.of(testNode1, testNode2).collect(Collectors.toSet());
-        Node holidayNode = new Node("Vacation Tasks", holidays);
-        System.out.println(holidayNode.getHtml());
+        Composite testComposite1 = new Composite("Animal Care", testSet1);
+        Composite testComposite2 = new Composite("House Keeping", testSet2);
+        Set<Component> holidays = Stream.of(testComposite1, testComposite2).collect(Collectors.toSet());
+        Composite holidayComposite = new Composite("Vacation Tasks", holidays);
+        System.out.println(holidayComposite.getHtml());
     }
 }
