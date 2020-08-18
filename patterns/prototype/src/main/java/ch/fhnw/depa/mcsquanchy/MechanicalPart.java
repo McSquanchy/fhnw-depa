@@ -10,16 +10,12 @@ public class MechanicalPart implements MachinePart {
     }
 
     @Override
-    public MachinePart makeCopy() {
-        MechanicalPart mechanicalPartObject = null;
-
+    public MechanicalPart clone() {
         try {
-            mechanicalPartObject = (MechanicalPart) super.clone();
+            return (MechanicalPart) super.clone();
         } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            throw new InternalError();
         }
-
-        return mechanicalPartObject;
     }
 
     @Override

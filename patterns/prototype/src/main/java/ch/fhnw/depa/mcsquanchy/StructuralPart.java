@@ -10,16 +10,12 @@ public class StructuralPart implements MachinePart {
     }
 
     @Override
-    public MachinePart makeCopy() {
-        StructuralPart structuralPartObject = null;
-
+    public StructuralPart clone() {
         try {
-            structuralPartObject = (StructuralPart) super.clone();
+            return (StructuralPart) super.clone();
         } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            throw new InternalError();
         }
-
-        return structuralPartObject;
     }
 
     @Override
